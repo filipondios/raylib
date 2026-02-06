@@ -89,9 +89,9 @@ class PerlinMap:
         self.pixels_vertical = int(math.ceil((window_height/scale)/self.pixel_width)) + 2
         self.pixels_horizontal = pixels_horizontal + 2
 
-        np.random.shuffle(self.p)
+        #np.random.shuffle(self.p)
         self.perlin_scale = perlin_scale
-        self.chunk = np.fromfunction(np.vectorize(self.perlin_noise_at), 
+        self.chunk = np.fromfunction(lambda i, j: np.vectorize(self.perlin_noise_at)(j, i), 
             (self.pixels_vertical, self.pixels_horizontal))
 
         # This is just the offset relative to the game 2D camera.
